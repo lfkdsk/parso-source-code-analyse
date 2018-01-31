@@ -1,6 +1,5 @@
-# Read Parso Source Code
 ###################################################################
-parso - A Python Parser
+parso - A Python Parser Code Analyse
 ###################################################################
 
 .. image:: https://secure.travis-ci.org/davidhalter/parso.png?branch=master

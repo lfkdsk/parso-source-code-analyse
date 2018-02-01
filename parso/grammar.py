@@ -186,7 +186,6 @@ class Grammar(object):
         normalizer.walk(node)
         return normalizer.issues
 
-
     def __repr__(self):
         labels = self._pgen_grammar.number2symbol.values()
         txt = ' '.join(list(labels)[:3]) + ' ...'
@@ -250,6 +249,7 @@ def load_grammar(**kwargs):
 
     :param str version: A python version string, e.g. ``version='3.3'``.
     """
+
     def load_grammar(language='python', version=None):
         if language == 'python':
             version_info = parse_version_string(version)

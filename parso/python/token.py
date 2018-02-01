@@ -1,9 +1,14 @@
+# coding=utf-8
 from __future__ import absolute_import
 from itertools import count
 from token import *
 
 from parso._compatibility import py_version
 
+"""
+这个文件就是在分配 Token 的序号，N_TOKENS 是系统实现的 Token 的类型数目，
+都在这个之后分配就行了
+"""
 
 _counter = count(N_TOKENS)
 # Never want to see this thing again.
@@ -34,6 +39,9 @@ tok_name[ERROR_DEDENT] = 'ERROR_DEDENT'
 
 
 # Map from operator to number (since tokenize doesn't do this)
+"""
+生成一一对应的 MAP，王垠的 Project 也有类似的用法，都这么懒得么。。。
+"""
 
 opmap_raw = """\
 ( LPAR

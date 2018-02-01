@@ -1,3 +1,4 @@
+# coding=utf-8
 from abc import abstractmethod, abstractproperty
 from parso._compatibility import utf8_repr, encoding, py_version
 

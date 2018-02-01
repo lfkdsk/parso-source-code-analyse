@@ -5,6 +5,12 @@ created. Clearly there is huge need to use conforming syntax.
 import sys
 import platform
 
+"""
+
+一堆补丁方法而已
+
+"""
+
 # Cannot use sys.version.major and minor names, because in Python 2.6 it's not
 # a namedtuple.
 py_version = int(str(sys.version_info[0]) + str(sys.version_info[1]))
@@ -58,6 +64,7 @@ def utf8_repr(func):
     ``__repr__`` methods in Python 2 don't allow unicode objects to be
     returned. Therefore cast them to utf-8 bytes in this decorator.
     """
+
     def wrapper(self):
         result = func(self)
         if isinstance(result, unicode):
@@ -94,7 +101,7 @@ except ImportError:
         roots = set(dir(cls)) & set(convert)
         if not roots:
             raise ValueError('must define at least one ordering operation: < > <= >=')
-        root = max(roots)       # prefer __lt__ to __le__ to __gt__ to __ge__
+        root = max(roots)  # prefer __lt__ to __le__ to __gt__ to __ge__
         for opname, opfunc in convert[root]:
             if opname not in roots:
                 opfunc.__name__ = opname

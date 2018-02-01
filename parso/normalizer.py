@@ -2,6 +2,12 @@ from contextlib import contextmanager
 
 from parso._compatibility import use_metaclass
 
+"""
+
+我不知道这个类是用来干啥的
+
+"""
+
 
 class _NormalizerMeta(type):
     def __new__(cls, name, bases, dct):
@@ -41,8 +47,8 @@ class Normalizer(use_metaclass(_NormalizerMeta)):
         except AttributeError:
             return self.visit_leaf(node)
         else:
-           with self.visit_node(node):
-               return ''.join(self.visit(child) for child in children)
+            with self.visit_node(node):
+                return ''.join(self.visit(child) for child in children)
 
     @contextmanager
     def visit_node(self, node):
@@ -145,7 +151,6 @@ class Issue(object):
 
     def __repr__(self):
         return '<%s: %s>' % (self.__class__.__name__, self.code)
-
 
 
 class Rule(object):

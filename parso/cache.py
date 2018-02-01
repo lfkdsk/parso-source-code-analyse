@@ -17,7 +17,6 @@ from parso._compatibility import FileNotFoundError
 
 LOG = logging.getLogger(__name__)
 
-
 _PICKLE_VERSION = 30
 """
 Version number (integer) for file system cache.
@@ -40,10 +39,13 @@ _VERSION_TAG = '%s-%s%s-%s' % (
 """
 Short name for distinguish Python implementations and versions.
 
+这里是读取 Python 文件的缓存配置
+
 It's like `sys.implementation.cache_tag` but for Python < 3.3
 we generate something similar.  See:
 http://docs.python.org/3/library/sys.html#sys.implementation
 """
+
 
 def _get_default_cache_path():
     if platform.system().lower() == 'windows':
@@ -53,6 +55,7 @@ def _get_default_cache_path():
     else:
         dir_ = os.path.join(os.getenv('XDG_CACHE_HOME') or '~/.cache', 'parso')
     return os.path.expanduser(dir_)
+
 
 _default_cache_path = _get_default_cache_path()
 """
@@ -74,6 +77,13 @@ class _NodeCacheItem(object):
         if change_time is None:
             change_time = time.time()
         self.change_time = change_time
+
+
+"""
+
+各种加载模块的方法 =、=
+
+"""
 
 
 def load_module(hashed_grammar, path, cache_path=None):
